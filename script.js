@@ -96,8 +96,10 @@ const toggleSeatSelection = (seatEl, seatNumber) => {
 };
 
 const confirmBooking = () => {
-  if (!currentSessionKey) return;
-
+  if (!currentSessionKey || selectedSeats.length === 0) {
+    alert("Please select at least one seat before confirming.");
+    return;
+  }
   const bookingData = getBookingData();
   const currentBooked = bookingData[currentSessionKey] || [];
 
